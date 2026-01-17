@@ -1,15 +1,8 @@
--- Create the database if it doesn't exist (optional, mostly for local setup)
--- CREATE DATABASE IF NOT EXISTS TechHubStore;
--- USE TechHubStore;
 
--- Disable foreign key checks to allow dropping tables if needed (for reset)
 SET FOREIGN_KEY_CHECKS = 0;
 
--- --------------------------------------------------------
 
---
 -- Table structure for table `users`
---
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -28,11 +21,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
 -- Table structure for table `products`
---
 
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
@@ -47,11 +36,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
 -- Table structure for table `orders`
---
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
@@ -65,11 +50,7 @@ CREATE TABLE `orders` (
   CONSTRAINT `fk_orders_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
 -- Table structure for table `order_items`
---
 
 DROP TABLE IF EXISTS `order_items`;
 CREATE TABLE `order_items` (
@@ -122,4 +103,5 @@ INSERT INTO `orders` (`user_id`, `total_amount`, `status`) VALUES
 -- Seed Data for Order Items (Linking User Order to Product)
 INSERT INTO `order_items` (`order_id`, `product_id`, `quantity`, `price_at_purchase`) VALUES
 (1, 1, 1, 1450.00);
+
 
